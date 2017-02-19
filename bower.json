@@ -1,0 +1,24 @@
+{
+  "name": "bluebank",
+  "homepage": "https://github.com/vinifrontend/bluebank",
+  "description": "projeto para ibm",
+  "main": "index.html",
+  "keywords": [
+    "angular",
+    "jquery",
+    "material",
+    "bootstrap"
+  ],
+  "authors": [
+    "Vinicius Barbosa"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="bank">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blue Bank - Home</title>
+    <link rel="stylesheet" href="assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="assets/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body ng-controller="bankController as bank">
+
+<section class="container-fluid">
+    <div class="row">
+        <ng-include src="menu[0].url"></ng-include>
+    </div>
+</section>
+
+<section class="container-fluid content">
+
+    <div class="row">
+       <!--visao geral-->
+        <article class="col-lg-12 col-sm-12 col-xs-12">
+            <p class="h2 title">Home</p>
+
+            <div class="row">
+                <div class="col-lg-4 col-sm-12 col-md-4 col-xs-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Saldos</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-striped">
+                                <li>Saldo bloqueado <span class="pull-right {{saldoBlock > 0 ? 'text-success' : 'text-danger'}}">R$ {{saldoBlock}}</span></li>
+                                <li>Saldo conta corrente <span class="pull-right {{saldo > 0 ? 'text-success' : 'text-danger'}}">R$ {{saldo}}</span></li>
+                                <li>Limite conta corrente <span class="pull-right {{limite > 0 ? 'text-success' : 'text-danger'}}" >R$ {{limite}}</span></li>
+                                <li>Saldo conta poupança <span class="pull-right {{saldoPoup > 0 ? 'text-success' : 'text-danger'}}">R$ {{saldoPoup}}</span></li>
+                                <li>Saldo total <span class="pull-right {{saldoDisp > 0 ? 'text-success' : 'text-danger'}}">R$ {{saldoDisp}}</span></li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer text-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info btn-raised dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Transferir <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="transferencia_entre_bb.html">Entre contas Blue Bank</a></li>
+                                    <li><a href="transferencia_doc_ted.html">DOC e TED</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4 col-sm-12 col-md-4 col-xs-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Limites de crédito</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-striped">
+                                <li>Limite emprestimo disponível <span class="pull-right {{limiteEmp > 0 ? 'text-success' : 'text-danger'}}">R$ {{limiteEmp}}</span></li>
+                                <li>Limite cartão de crédito <span class="pull-right {{limiteCart > 0 ? 'text-success' : 'text-danger'}}">R$ {{limiteCart}}</span></li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer text-right">
+                            <a href="solicitar_emprestimo.html" class="btn btn-info btn-raised">Solicitar emprestimo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-12 col-md-4 col-xs-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Extrato - 3 últimos dias</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-striped">
+                                <li>Saldo anterior <span class="pull-right">R$ 0,00</span></li>
+                                <li>Transferência p/ c/c  <span class="pull-right">R$ 1000,00</span></li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer text-right">
+                            <a href="extrato.html" class="btn btn-info btn-raised">Ver extrato</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+    </div>
+</section>
+
+<section class="container-fluid">
+    <div class="row">
+        <ng-include src="menu[1].url"></ng-include>
+    </div>
+</section>
+<script type="text/javascript" src="assets/node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/node_modules/bootstrap-material-design/dist/js/material.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="assets/js/bank.js"></script>
+<script type="text/javascript" src="assets/js/script.js"></script>
+<script>
+    $.material.init();
+    $('.metismenu').metisMenu();
+
+</script>
+
+</body>
+</html>

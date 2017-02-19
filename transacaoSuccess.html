@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="bank">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blue Bank - Transferência com sucesso</title>
+    <link rel="stylesheet" href="assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="assets/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/margin.css">
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body  ng-controller="bankController as bank">
+
+<section class="container-fluid">
+    <div class="row">
+        <ng-include src="menu[0].url"></ng-include>
+    </div>
+</section>
+
+<section class="container-fluid content">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-10 col-xs-12 col-lg-offset-3 col-md-offset-3 col-sm-offset-1">
+            <p class="text-center text-transfer-sucess mtop20"><span class="glyphicon glyphicon-ok-sign success"></span> Transferência efetuada com sucesso!</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <a href="home.html" class="btn btn-info mtop20 btn-raised">Voltar ao início</a>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid">
+    <div class="row">
+        <ng-include src="menu[1].url"></ng-include>
+    </div>
+</section>
+
+<script type="text/javascript" src="assets/node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/node_modules/bootstrap-material-design/dist/js/material.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="assets/js/bank.js"></script>
+<script type="text/javascript" src="assets/js/script.js"></script>
+<script>
+    $.material.init();
+    $('.metismenu').metisMenu();
+
+</script>
+</body>
+</html>

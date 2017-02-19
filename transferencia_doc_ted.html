@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="bank">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blue Bank - Transferência</title>
+    <link rel="stylesheet" href="assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="assets/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/margin.css">
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body ng-controller="bankController as bank">
+
+<!--incluindo o header-->
+<section class="container-fluid">
+    <div class="row">
+        <ng-include src="menu[0].url"></ng-include>
+    </div>
+</section>
+
+<!--conteudo-->
+<section class="container-fluid content">
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Como funciona</h3>
+                </div>
+                <div class="panel-body">
+                    <p>O ISPB é o código identificador atribuído pelo Banco Central do Brasil à instituição Financeira participante do Sistema de Transferência de Reservas.</p>
+                    <p><strong>Limite de horários e valores para DOC</strong>: até 22h15 com o valor máximo de R$ 4.999,99 sendo creditado no próximo dia útil.</p>
+                    <p><strong>Limite de horários e valores para TED</strong>: até 16h30 com valor mínimo de R$ 0,01 sendo creditado no mesmo dia útil.</p>
+                    <p>As transferências realizadas após o horário poderão ser agendadas para o dia seguinte. <br />Você pode escolher por transferir valores entre R$ 0,01 e R$ 4.999,99 através da opção de DOC ou TED.</p>
+                    <p>Em algumas situações, será necessário cadastrar o favorecido utilizando o caminho: Transferências » Cadastramento de Favorecidos. Você deverá selecionar DOC ou TED.</p>
+                </div>
+            </div>
+        </div>
+
+    <!--abrindo o formulario-->
+    <form action="" id="formTransferencia">
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Insira os dados da transferência</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                        <label class="text-info" for="docTed">Selecione o tipo de transação:</label>
+                        <select name="docTed" id="docTed" class="form-control" ng-model="docTed">
+                            <option value="">Selecione</option>
+                            <option value="1">DOC</option>
+                            <option value="2">TED</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+                        <label class="text-info" for="contaDest">Selecione o tipo de conta destino:</label>
+                        <select class="form-control" name="contaDest" ng-model="contaDest" id="contaDest">
+                            <option value="1">Conta Corrente</option>
+                            <option value="2">Conta Poupança</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12" ng-show="contaDest != '' && docTed != ''">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Selecione um favorecido ou preencha os formulário a baixo</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mbottom10">
+                        <label class="text-info mright10" for="mesmaTitularidade">
+                            <input type="radio" name="titularidade" ng-model="titularidade" value="1" id="mesmaTitularidade" ng-change="clearInput()" autocomplete="off"> Mesma titularidade
+                        </label>
+                        <label class="text-info" for="outraTitularidade">
+                            <input type="radio" name="titularidade" ng-model="titularidade" value="2" id="outraTitularidade" ng-change="clearInput()" autocomplete="off"> Outra titularidade
+                        </label>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mbottom20">
+                        <label class="text-info mright10" for="selecionarFav">
+                            <input type="radio" name="options" ng-model="favorecidoForm" value="1" id="selecionarFav" ng-change="clearInput()" autocomplete="off"> Selecionar favorecido
+                        </label>
+                        <label class="text-info" for="preencherForm">
+                            <input type="radio" name="options" ng-model="favorecidoForm" value="2" id="preencherForm" ng-change="clearInput()" autocomplete="off"> Preencher dados
+                        </label>
+                    </div>
+
+                    <!--selecionando favoritos-->
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-show="favorecidoForm == '1'">
+                        <label for="favorecidos" class="text-info">Selecione um favorecido</label>
+                        <select name="favorecidos" ng-model="favorecido" ng-options="favorecido as favorecido.nome for favorecido in favorecidosList" id="favorecidos" class="form-control"></select>
+
+                        <p ng-show="favorecido != '' && favorecidoForm == '1'">Nome: {{favorecido.nome}} | Banco: {{favorecido.banco}} | Ag: {{favorecido.agencia}} | Conta: {{favorecido.conta}}</p>
+                    </div>
+
+
+                    <!--preenchendo formulário-->
+
+
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-show="favorecidoForm == '2'">
+                        <label for="bancos" class="text-info">Banco:</label>
+                        <select name="bancos" id="bancos" ng-model="banco" ng-options="banco as banco.nome for banco in bancosList" class="form-control"></select>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-show="favorecidoForm == '2'">
+                        <label for="agenciaUser" class="text-info">Agência sem dígito:</label>
+                        <input type="number" class="form-control" id="agenciaUser" name="agenciaUser" ng-model="agenciaUser" required>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-show="favorecidoForm == '2'">
+                        <label for="contaDestino" class="text-info">Conta:</label>
+                        <input type="text" id="contaDestino" class="form-control" name="contaDestino" ng-model="contaDestino" required>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-show="favorecidoForm == '2' && titularidade == '2'">
+                        <label for="userDestino" class="text-info">Nome do usuário destino:</label>
+                        <input type="text" class="form-control" id="userDestino" name="userDestino" ng-model="userDestino" required>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-show="favorecidoForm == '2' && titularidade == '2'">
+                        <label for="cpf" class="text-info"><input type="radio" name="documentoDestino" ng-model="documentoDestino" id="cpf" value="1"> CPF</label>
+                        <label for="cnpj" class="text-info"><input type="radio" name="documentoDestino" ng-model="documentoDestino" id="cnpj" value="2"> CNPJ</label>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-show="documentoDestino == '1' && titularidade == '2'">
+                        <label for="cpfDestino" class="text-info">CPF do destinatário:</label>
+                        <input type="text" class="form-control" id="cpfDestino" name="cpfDestino" ng-model="cpfDestino" required>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-show="documentoDestino == '2' && titularidade == '2'">
+                        <label for="cnpjDestino" class="text-info">CNPJ do destinatário:</label>
+                        <input type="text" class="form-control" id="cnpjDestino" name="cnpjDestino" ng-model="cnpjDestino" required>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-show="favorecidoForm != '' || favorecido != ''">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                <label for="valueTo" class="text-info">Valor para transferência R$</label>
+                                <input type="text" id="valueTo" name="valueTo" required ng-change="changeValue()" class="form-control" ng-model="dinheiro">
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <a data-toggle="modal" data-target="#confirmarTransfer" class="btn btn-info btn-raised pull-right" ng-click="transferir()" ng-show="dinheiro > 0 && dinheiro <= saldo">Transferir</a>
+                                <!--<input type="submit" class="btn btn-info btn-raised" name="transferir" value="Transferir" ng-show="dinheiro > 0 && dinheiro <= saldo">-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+<!--incluindo o footer-->
+<section class="container-fluid">
+    <div class="row">
+        <ng-include src="menu[1].url"></ng-include>
+    </div>
+</section>
+
+<!--modal de confirmacao-->
+
+
+<div class="modal fade" id="confirmarTransfer" tabindex="-1" role="dialog" aria-labelledby="confirmarTrans">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-primary" id="confirmarTrans">Confirmação</h4>
+            </div>
+            <div class="modal-body">
+
+                <p>Tranferencia para: {{favorecido == '' ? userDestino : favorecido.nome}}</p>
+                <p>Agencia: {{favorecido == '' ? agenciaUser : favorecido.agencia}}</p>
+                <p>Conta: {{favorecido == '' ? contaDestino : favorecido.conta}}</p>
+                <p>Valor: R${{dinheiro}}</p>
+                <form action="#" id="confirmarTransacao">
+                    <p>Para confirmar esta transação, por favor confirme seu cpf:</p>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon bg-info-cpf"><i class="cpf">CPF</i></span>
+                            <input type="text" ng-model="cpfUser" name="cpfUser" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <a href="transacaoSuccess.html" class="btn btn-info btn-raised" ng-show="cpfUser != ''">Confirmar Transação</a>
+                    <!--<input type="submit" class="btn btn-info btn-raised" name="confirmar" value="Confirmar">-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="assets/node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/node_modules/bootstrap-material-design/dist/js/material.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="assets/js/bank.js"></script>
+<script type="text/javascript" src="assets/js/script.js"></script>
+<script>
+    $.material.init();
+    $('.metismenu').metisMenu();
+    $('input[name="cpfDestino"], input[name="cpfUser"]').mask('000.000.000-00');
+    $('input[name="cnpjDestino"]').mask('00.000.000/0000-00');
+</script>
+</body>
+</html>

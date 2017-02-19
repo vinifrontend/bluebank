@@ -1,0 +1,228 @@
+html, body{
+    min-height: 100%;
+    position: relative;
+}
+
+.bg-login{
+    background: url(../images/bg_login.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100%;
+    position: fixed;
+    min-width: 100%;
+}
+
+/* formulario de login */
+
+.login{
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 8px;
+    margin-top: 270px;
+}
+
+form#formLogin input[placeholder]{
+    color: #00026f !important;
+}
+
+form#formLogin input:not(input[type="submit"]){
+    color: #000;
+}
+
+.title, #tituloModal{
+    color: #337ab7;
+    font-family: "PatuaOne", Arial, Helvetica;
+}
+
+form#formLogin .btn-entrar{
+    outline:none;
+    background-color: #337ab7;
+}
+
+form#formLogin .btn-entrar:hover{
+    outline:none;
+    background-color: #34a7e5;
+}
+
+form#formLogin .btn-question{
+    padding: 2px 4px;
+    font-size: 22px;
+    background: transparent;
+    color: #337ab7;
+}
+
+form#formLogin .btn-question:hover{
+    background-color:transparent;
+    color: #34a7e5;
+}
+
+
+/*modal de como preencher o formulario de login*/
+
+#duvidas .modal-dialog .modal-content{
+    -webkit-border-radius:8px;
+    -moz-border-radius:8px;
+    border-radius:8px;
+}
+
+/* header apos login*/
+
+.navbar-blue{
+    background-color: #337ab7!important;
+}
+
+.navbar-brand.title{
+    font-size: 38px;
+}
+
+/*menu lateral*/
+
+
+.metismenu{
+    background-color: #337ab7;
+    padding: 0;
+    min-height:100%;
+}
+
+.metismenu li.active{
+    background-color: #34a7e5;
+}
+
+.metismenu li.active a{
+    color: #fff;
+}
+
+.metismenu li a{
+    text-decoration: none!important;
+    width: 100%;
+    display: block;
+    color: #fff;
+    font-size: 18px;
+    padding: 4px 8px;
+}
+
+.metismenu li:hover{
+    background-color: #34a7e5;
+}
+
+.metismenu li:hover a, .metismenu li:hover a.has-arrow:after{
+    color: #fff;
+}
+
+.metismenu li ul{
+    background: #fff;
+    list-style: none;
+    padding-left: 0;
+    text-indent: 20px;
+}
+
+.metismenu li ul li a{
+    color: #337ab7!important;
+}
+
+.metismenu li ul li:hover a{
+    color: #fff!important;
+}
+
+/*HOME*/
+
+.title{
+    margin-top:0;
+}
+
+.h2.title{
+    font-family: Arial, Helvetica;
+    margin-bottom: 15px;
+}
+
+.list-striped{
+    list-style: none;
+    padding:0;
+}
+
+.list-striped li{
+    padding: 5px;
+}
+
+.list-striped li:nth-child(odd) { background-color:#eee}
+.list-striped li:nth-child(even) { background-color:#fff}
+
+.panel.panel-primary .panel-heading{
+    background-color: #337ab7;
+}
+
+.panel.panel-primary .panel-body{
+    min-height: 100%;
+}
+
+i.cpf{
+    font-style: normal;
+    font-size: 14px;
+    color: #000;
+    background-color: transparent;
+}
+
+
+/*transferencia sucesso*/
+
+.glyphicon.success, .glyphicon.error{
+    color: #0fab00;
+    font-size: 48px;
+    vertical-align: middle;
+}
+
+.text-transfer-sucess{
+    font-size: 36px;
+    color: #337ab7;
+    font-weight: 500;
+}
+
+.btn-inicio{
+    margin-top: 20px;
+}
+
+/*transferencia erro*/
+.glyphicon.error{
+    color: #f00;
+}
+
+.btn.active{
+    color: #fff;
+}
+.form-group {
+    padding-bottom: 7px;
+    margin: 7px 0 0 0;
+}
+
+
+/*footer*/
+
+footer{
+    background-color: #337ab7;
+    padding-top: 20px;
+    clear: both;
+}
+
+footer ul li a{
+    color: #fff;
+}
+
+.copy{
+    margin-top:20px;
+    color: #fff;
+    font-size: 12px;
+}
+
+.list-title{
+    font-size: 20px;
+    color: #fff;
+    font-weight:bold;
+    text-transform: uppercase;
+}
+
+@media (min-width: 320px) and (max-width: 680px){
+    .login{
+        margin-top: 150px;
+    }
+}

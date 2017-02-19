@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="bank">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blue Bank - Extrato</title>
+    <link rel="stylesheet" href="assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="assets/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body ng-controller="bankController as bank">
+
+<section class="container-fluid">
+    <div class="row">
+        <ng-include src="menu[0].url"></ng-include>
+    </div>
+</section>
+
+<section class="container-fluid content">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Extato bancário</h3>
+            </div>
+            <div class="panel-body">
+                <form action="" id="atualizarExtrato">
+                    <label for="alterarData" class="text-info">Período</label>
+                    <select name="alterarData" id="alterarData" class="form-control">
+                        <option value="">Selecione um intervalo</option>
+                        <option value="1">últimos 3 dias</option>
+                        <option value="2">últimos 7 dias</option>
+                        <option value="3">últimos 15 dias</option>
+                        <option value="4">últimos 30 dias</option>
+                        <option value="5">últimos 60 dias</option>
+                        <option value="6">últimos 90 dias</option>
+                        <option value="7">último ano</option>
+                    </select>
+                </form>
+
+                <ul class="list-unstyled list-striped mtop20">
+                    <li>última transacao</li>
+                    <li>última transacao</li>
+                    <li>última transacao</li>
+                    <li>última transacao</li>
+                    <li>última transacao</li>
+                    <li>última transacao</li>
+                    <li>última transacao</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+        <a href="home.html" class="btn btn-info btn-raised">Voltar para o início</a>
+    </div>
+</section>
+
+<section class="container-fluid">
+    <div class="row">
+        <ng-include src="menu[1].url"></ng-include>
+    </div>
+</section>
+<script type="text/javascript" src="assets/node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/node_modules/bootstrap-material-design/dist/js/material.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.mask.min.js"></script>
+<script type="text/javascript" src="assets/js/bank.js"></script>
+<script type="text/javascript" src="assets/js/script.js"></script>
+<script>
+    $.material.init();
+    $('.metismenu').metisMenu();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blue Bank</title>
+    <link rel="stylesheet" href="assets/node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="assets/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<section class="container-fluid bg-login">
+    <div class="container">
+        <div class="login col-lg-6 col-sm-8 col-xs-12 col-lg-offset-3 col-sm-offset-2">
+            <p class="h1 text-primary text-center text-uppercase title">Blue Bank</p>
+            <form action="" id="formLogin">
+                <div class="col-lg-6 col-sm-6 col-xs-12">
+                    <input type="text" required name="idUser" class="form-control" placeholder="ID">
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-xs-12">
+                    <input type="text" required name="cpfUser" class="form-control" placeholder="CPF">
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-xs-12">
+                    <input type="text" required name="contaUser" class="form-control" placeholder="Conta Corrente">
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-xs-12">
+                    <input type="text" required name="agenciaUser" class="form-control" placeholder="Agência">
+                </div>
+
+                <!--botoes do form-->
+
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <a data-toggle="modal" data-target="#duvidas" class="btn btn-primary btn-question">
+                        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                    </a>
+
+                    <a href="home.html" class="btn btn-primary btn-raised pull-right btn-entrar" name="login">Entrar</a>
+                    <!--<input type="submit" class="btn btn-primary btn-raised pull-right btn-entrar" name="login" value="Entrar">-->
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<!--modal de como preencher o formulário-->
+
+<div class="modal fade" id="duvidas" tabindex="-1" role="dialog" aria-labelledby="tituloModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-primary" id="tituloModal">Como preencher o formulário</h4>
+            </div>
+            <div class="modal-body">
+                <p>O campo ID é preenchido com seu ID de cadastro no banco.</p>
+                <p>O campo CPF é preenchido com o número do seu documento CPF</p>
+                <p>O campo Conta Corrente é preenchido com o número da sua conta corrente criada no banco</p>
+                <p>O campo Agência é preenchido de acordo com o número da sua agência bancária</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="assets/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="assets/node_modules/bootstrap-material-design/dist/js/material.min.js"></script>
+<script src="assets/js/jquery.mask.min.js"></script>
+
+<script>
+    $.material.init();
+    $('input[name="cpfUser"]').mask('000.000.000-00');
+</script>
+</body>
+</html>
